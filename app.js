@@ -1,115 +1,109 @@
+
+
+
+
+
 //memory price
-function memoryUpdate ( isValue){
-    const memoryPrice = document.getElementById('memory-price');
-
-    if (isValue == true) {
-        memoryPrice.innerText = 180
-        
-    } else {
-        memoryPrice.innerText = 0
-
-    }
-  
-  
-
+function memoryUpdate(price) {
+    const extraMemmory = document.getElementById('memory-price');
+    extraMemmory.innerText = price;
 }
 
-//delivery cost
-function deliveryChargeUpdate(isValue){
 
-    const deliveryCharge = document.getElementById('delivery-price')
-    if (isValue == false) {
-        deliveryCharge.innerText=0;
-        
-    } else {
+//total price
 
-        deliveryCharge.innerText=20;
-    }
-
-    upDateTotal ()
-
+function storageUpdate(price) {
+    const extraStorage = document.getElementById('storage-price');
+    extraStorage.innerText = price;
 }
-      
-  
-  
-  
-  
- 
-  
+
+//delivery price
+function deliveryUpdate(price) {
+    const extraStorage = document.getElementById('delivery-price');
+    extraStorage.innerText = price;
+}
 
 
-
-
- 
-
-//memory uptodate
-document.getElementById('smallMemory-price').addEventListener('click',function(){
-    
-    memoryUpdate( false)
-    
-
-})
-
-document.getElementById('bigMemory-price').addEventListener('click',function(){
-
-   
-    memoryUpdate(true)
-})
-
-//full storage part
-
-document.getElementById('smallStorage-price').addEventListener('click',function(){
-    const extraPrice = document.getElementById('storage-price')
-    extraPrice.innerText = 0
-    
-  
-    
-   
-    
-})
-document.getElementById('middleStorage-price').addEventListener('click',function(){
-
- const extraPrice = document.getElementById('storage-price')
-     extraPrice.innerText = 100
-   
-    
-})
-
-document.getElementById('bigStorage-price').addEventListener('click',function(){
-
-    // const extraPrice = document.getElementById('storage-price')
-    // extraPrice.innerText = 180
-    // upDateTotal() 
-  
-})
-//delivery update
-
-document.getElementById('delivery-cost').addEventListener('click',function(){
-
-   
-
-    deliveryChargeUpdate(false)
-})
-
-document.getElementById('earlyDelivery-price').addEventListener('click',function(){
- 
-    deliveryChargeUpdate(true)
-  
-
-})
 
 
 //total update
 
-function upDateTotal () {
-    
-    const memory = parseInt(document.getElementById('memory-price').innerText)
+
+function upDateTotal() {
+
+    const memory = parseInt(document.getElementById('memory-price').innerText);
     const delivery = parseInt(document.getElementById('delivery-price').innerText)
     const storage = parseInt(document.getElementById('storage-price').innerText)
-    const total = parseInt(document.getElementById('total-Price').innerText)
-    const price = 1299+ memory+storage+delivery;
-    total.innerText = price
-   
+    const total = document.getElementById('total-Price');
+    const price = 1299 + memory+delivery+storage;
+    total.innerText = price;
+    return price;
 
 }
+
+
+//memory uptodate
+document.getElementById('smallMemory-price').addEventListener('click', function() {
+
+    memoryUpdate(0);
+    upDateTotal();
+
+})
+
+document.getElementById('bigMemory-price').addEventListener('click', function() {
+
+
+    memoryUpdate(180);
+    upDateTotal();
+})
+
+
+//storage update
+document.getElementById('smallStorage-price').addEventListener('click',function(){
+    storageUpdate(0)
+        
+        
+     })
+    document.getElementById('middleStorage-price').addEventListener('click',function(){
+    
+        storageUpdate(100)
+        upDateTotal()
+       
+        
+    })
+    
+    document.getElementById('bigStorage-price').addEventListener('click',function(){
+    
+        storageUpdate(180)
+        upDateTotal()
+      
+    })
+
+
+
+        //delivery update
+
+document.getElementById('delivery-cost').addEventListener('click', function() {
+
+    deliveryUpdate(0)
+    upDateTotal()
+
+     
+ })
+
+ document.getElementById('earlyDelivery-price').addEventListener('click', function() {
+    deliveryUpdate(20)
+    upDateTotal()
+
+ })
+
+
+
+
+
+
+
+
+
+
 
